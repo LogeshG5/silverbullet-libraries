@@ -81,7 +81,7 @@ command.define {
 
 command.define {
   name = "Save document (with Formatting)",
-  -- key = "Ctrl-s",
+  key = "Ctrl-s",
   run = formatter.formatAndSave,
 }
 ```

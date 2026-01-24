@@ -2,6 +2,9 @@
 name: "Library/LogeshG5/Formatter"
 tags: meta/library
 pageDecoration.prefix: "🛠️ "
+files:
+- prettier-3.6.2.js
+- prettier-markdown-plugin-3.6.2.js
 ---
 
 # Formatter
@@ -15,8 +18,11 @@ A plug [silverbullet-formatter](https://github.com/LogeshG5/silverbullet-formatt
 ```space-lua
 formatter = formatter or {}
 
-local prettier = js.import("https://cdn.jsdelivr.net/npm/prettier@3.6.2/standalone/+esm")
-local prettierMarkdown = js.import("https://cdn.jsdelivr.net/npm/prettier@3.6.2/plugins/markdown/+esm")
+-- local prettier = js.import("https://cdn.jsdelivr.net/npm/prettier@3.6.2/standalone/+esm")
+-- local prettierMarkdown = js.import("https://cdn.jsdelivr.net/npm/prettier@3.6.2/plugins/markdown/+esm")
+
+local prettier = js.import("/.fs/Library/LogeshG5/prettier-3.6.2.js")
+local prettierMarkdown = js.import("/.fs/Library/LogeshG5/prettier-markdown-plugin-3.6.2.js")
 
 function formatter.formatText(text)
   return prettier.format(text, { parser = 'markdown', plugins =  { prettierMarkdown } })

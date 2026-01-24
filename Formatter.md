@@ -1,3 +1,9 @@
+---
+name: "Library/LogeshG5/Formatter"
+tags: meta/library
+pageDecoration.prefix: "🛠️ "
+---
+
 # Formatter
 
 Format entire document or selected text with `Editor: Format` command.

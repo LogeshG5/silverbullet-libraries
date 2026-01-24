@@ -18,6 +18,7 @@ A plug [silverbullet-formatter](https://github.com/LogeshG5/silverbullet-formatt
 ```space-lua
 formatter = formatter or {}
 
+-- From internet
 -- local prettier = js.import("https://cdn.jsdelivr.net/npm/prettier@3.6.2/standalone/+esm")
 -- local prettierMarkdown = js.import("https://cdn.jsdelivr.net/npm/prettier@3.6.2/plugins/markdown/+esm")
 

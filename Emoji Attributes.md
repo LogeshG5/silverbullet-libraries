@@ -4,7 +4,7 @@
 /* 1. Add new attribute name */
 /* For the attribute [completed: 2026-02-02] add .sb-attribute[data-completed], */
 .sb-attribute[data-deadline],
-.sb-attribute[data-ask],
+.sb-attribute[data-ask]
 {
   > .sb-list.sb-frontmatter {
     background: none;

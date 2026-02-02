@@ -1,50 +1,27 @@
 # Attribute Decorator
 
 ```space-style
-.sb-attribute[data-due]::before,
-.sb-attribute[data-ask]::before,
-.sb-attribute[data-pr]::before,
-.sb-attribute[data-to]::before {
-  position: relative;
-  left: 1.5em;
-  color: var(--root-color); /* readable emoji color */
-  margin-left: -1.5em;
+/* 1. Add new attribute name */
+/* For the attribute [completed: 2026-02-02] add .sb-attribute[data-completed], */
+.sb-attribute[data-deadline],
+.sb-attribute[data-ask],
+{
+  > .sb-list.sb-frontmatter {
+    background: none;
+    color: var(--root-color);
+  }
+
+  > .sb-list.sb-frontmatter.sb-atom,
+  > .sb-list.sb-frontmatter.sb-meta {
+    display: none;
+  }
 }
 
-.sb-attribute :is(.sb-meta, .sb-atom) {
-  background: var(--root-background-color);
+/* 2. Add emoji decorations */
+.sb-attribute[data-deadline]::before {
+  content: "📅 ";
 }
-
-/* Hide meta characters: [, :, ] */
-.sb-attribute:is([data-ask], [data-to], [data-pr], [data-due]) .sb-meta {
-  color: var(--root-background-color);
-  background: var(--root-background-color);
-}
-
-/* Hide the literal "To" text */
-.sb-attribute:is([data-ask], [data-to], [data-pr], [data-due]) .sb-atom {
-  color: transparent;
-  background: var(--root-background-color);
-  position: absolute;
-}
-
-/* Show emoji (🤵) instead of value ("To") */
 .sb-attribute[data-ask]::before {
-  content: "🚩";
-}
-.sb-attribute[data-to]::before {
-  content: "🤵";
-}
-.sb-attribute[data-pr]::before {
-  content: "⚡️";
-}
-.sb-attribute[data-due]::before {
-  content: "📅";
-}
-
-/* Optional: slightly soften the value text */
-.sb-attribute .sb-frontmatter:not(.sb-meta):not(.sb-atom) {
-  opacity: 0.85;
-  background: var(--root-background-color);
+  content: "🚩 ";
 }
 ```

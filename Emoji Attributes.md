@@ -11,7 +11,7 @@
     color: var(--root-color);
   }
 
-  > .sb-list.sb-frontmatter.sb-atom,
+  > .sb-list.sb-frontmatter.sb-attribute-name,
   > .sb-list.sb-frontmatter.sb-meta {
     display: none;
   }

@@ -1,3 +1,9 @@
+---
+name: "Library/LogeshG5/JournalNavigationWidget"
+tags: meta/library
+pageDecoration.prefix: "🗂️ "
+---
+
 # Journal Navigation Widget
 
 Navigate Weekly/Daily Journals

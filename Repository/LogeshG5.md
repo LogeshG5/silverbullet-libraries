@@ -52,4 +52,9 @@ uri: github:LogeshG5/silverbullet-libraries/Toggle Title Bar Visibility.md
 website: https://github.com/LogeshG5/silverbullet-libraries/blob/main/Toggle Title Bar Visibility.md
 description: "Toggle Title Bar Visibility"
 ---
+name: "🧰 Mobile Toolbar"
+uri: github:LogeshG5/silverbullet-libraries/Mobile Toolbar.md
+website: https://github.com/LogeshG5/silverbullet-libraries/blob/main/Mobile Toolbar.md
+description: "Mobile Toolbar"
+---
 ```

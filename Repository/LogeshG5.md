@@ -37,4 +37,14 @@ uri: github:LogeshG5/silverbullet-libraries/Journal As Index.md
 website: https://github.com/LogeshG5/silverbullet-libraries/blob/main/Journal As Index.md
 description: "On clicking home navigate to Journal"
 ---
+name: "📄 Create Page in Same Directory"
+uri: github:LogeshG5/silverbullet-libraries/Create Page.md
+website: https://github.com/LogeshG5/silverbullet-libraries/blob/main/Create Page.md
+description: "On clicking home navigate to Journal"
+---
+name: "🖨️ Export As PDF with Pandoc"
+uri: github:LogeshG5/silverbullet-libraries/Export As PDF with Pandoc.md
+website: https://github.com/LogeshG5/silverbullet-libraries/blob/main/Export As PDF with Pandoc.md
+description: "Export As PDF with Pandoc"
+---
 ```

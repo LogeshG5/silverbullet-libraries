@@ -1,7 +1,7 @@
 ---
 name: "Library/LogeshG5/Formatter"
 tags: meta/library
-pageDecoration.prefix: "🛠️ "
+pageDecoration.prefix: "🧹 "
 files:
 - prettier-3.6.2.js
 - prettier-markdown-plugin-3.6.2.js

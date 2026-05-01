@@ -60,6 +60,6 @@ description: "Mobile Toolbar"
 name: "🎨 Base16 Theme"
 uri: github:LogeshG5/silverbullet-libraries/Base16 Theme.md
 website: https://github.com/LogeshG5/silverbullet-libraries/blob/main/Base16 Theme.md
-description: "Base16 Theme"
+description: "Configurable Theme with Base16 Colors"
 ---
 ```

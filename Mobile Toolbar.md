@@ -281,6 +281,7 @@ end
     padding-bottom: env(safe-area-inset-bottom); /* iOS support */
     user-select: none;
     touch-action: manipulation;
+    align-items: center;
 }
 
 .sb-toolbar-row {

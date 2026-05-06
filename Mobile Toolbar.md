@@ -11,7 +11,7 @@ pageDecoration.prefix: "🧰 "
 -- Utility helpers
 -- ============================================================
 
-function fmttb_normalize_sel(raw)
+function mbtb_normalize_sel(raw)
     if not raw then return nil end
     local f = math.min(raw.from, raw.to)
     local t = math.max(raw.from, raw.to)
@@ -19,7 +19,7 @@ function fmttb_normalize_sel(raw)
     return { from = f, to = t }
 end
 
-function fmttb_split_lines(text)
+function mbtb_split_lines(text)
     local lines = {}
     local remaining = text
     while true do
@@ -35,7 +35,7 @@ function fmttb_split_lines(text)
     return lines
 end
 
-function fmttb_get_line_range(full, sel)
+function mbtb_get_line_range(full, sel)
     if not sel or sel.from >= sel.to then return nil, nil, nil end
     local doc_len = #full
     local from_lua = sel.from + 1
@@ -66,7 +66,7 @@ function fmttb_get_line_range(full, sel)
     return line_from_cm, line_to_cm, full:sub(line_from_lua, line_to_lua)
 end
 
-function fmttb_get_len(text)
+function mbtb_get_len(text)
     if utf8 and utf8.len then
         local ok, len = pcall(utf8.len, text)
         if ok and len then return len end
@@ -74,7 +74,7 @@ function fmttb_get_len(text)
     return #text
 end
 
-function fmttb_get_current_line_range(full)
+function mbtb_get_current_line_range(full)
     local ok_sel, raw_sel = pcall(editor.getSelection)
     if not ok_sel or not raw_sel then return nil, nil, nil end
 
@@ -112,21 +112,21 @@ command.define {
         if not ok_txt then return end
 
         local ok_sel, raw_sel = pcall(editor.getSelection)
-        local sel = fmttb_normalize_sel(raw_sel)
+        local sel = mbtb_normalize_sel(raw_sel)
 
         local lf, lt, block
 
         if sel then
-            lf, lt, block = fmttb_get_line_range(full, sel)
+            lf, lt, block = mbtb_get_line_range(full, sel)
         else
-            lf, lt, block = fmttb_get_current_line_range(full)
+            lf, lt, block = mbtb_get_current_line_range(full)
             -- line is empty, so just insert
             if lf == lt then editor.insertAtCursor("- [ ] ") return end
         end
 
         if not lf then return end
 
-        local lines = fmttb_split_lines(block)
+        local lines = mbtb_split_lines(block)
 
         local all_are_tasks = true
         for _, l in ipairs(lines) do
@@ -159,7 +159,7 @@ command.define {
         editor.replaceRange(lf, lt, new_block)
         if sel then
           -- Retain selection only if text was already selected
-          editor.setSelection(lf, lf + fmttb_get_len(new_block))
+          editor.setSelection(lf, lf + mbtb_get_len(new_block))
         end
     end
 }
@@ -171,21 +171,21 @@ command.define {
         if not ok_txt then return end
 
         local ok_sel, raw_sel = pcall(editor.getSelection)
-        local sel = fmttb_normalize_sel(raw_sel)
+        local sel = mbtb_normalize_sel(raw_sel)
 
         local lf, lt, block
 
         if sel then
-            lf, lt, block = fmttb_get_line_range(full, sel)
+            lf, lt, block = mbtb_get_line_range(full, sel)
         else
-            lf, lt, block = fmttb_get_current_line_range(full)
+            lf, lt, block = mbtb_get_current_line_range(full)
             -- line is empty, so just insert
             if lf == lt then editor.insertAtCursor("- ") return end
         end
 
         if not lf then return end
 
-        local lines = fmttb_split_lines(block)
+        local lines = mbtb_split_lines(block)
 
         -- Check if all lines are already bullet points
         local all_are_bullets = true
@@ -219,7 +219,7 @@ command.define {
         
         if sel then
           -- Retain selection logic
-          editor.setSelection(lf, lf + fmttb_get_len(new_block))
+          editor.setSelection(lf, lf + mbtb_get_len(new_block))
         end
     end
 }
@@ -295,7 +295,7 @@ end
 .sb-toolbar-row::-webkit-scrollbar { display: none; }
 
 /* -- Buttons ------------------------------------------------------------ */
-.sb-fmttb-btn {
+.sb-mbtb-btn {
     flex-shrink: 0;
     width: 40px;
     height: 40px;
@@ -308,14 +308,29 @@ end
     color: var(--ui-accent-color);
 }
 
-.sb-fmttb-btn:active {
+.sb-mbtb-btn:active {
     background: var(--ui-accent-color);
     transform: scale(0.9);
 }
 
-.sb-fmttb-btn svg {
+.sb-mbtb-btn svg {
     width: 20px;
     height: 20px;
+}
+
+.sb-mbtb-separator {
+    width: 2px;
+    height: 24px;
+    background-color: var(--top-border-color);
+    /*margin: 0 8px;*/
+    align-self: center;
+    flex-shrink: 0;
+}
+
+.sb-toolbar-row {
+    display: flex;
+    align-items: center;
+    /* ensure the row handles the layout correctly */
 }
 
 /* Move the find panel above the toolbar*/
@@ -340,25 +355,15 @@ local icons = {
     check    = [[<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="m9 12 2 2 4-4"></path></svg>]],
     link     = [[<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>]],
     quote    = [[<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5H4v8h4c0 2-1 3-5 5z"></path><path d="M14 21c3 0 7-1 7-8V5h-6v8h4c0 2-1 3-5 5z"></path></svg>]],
-
   indent = [[<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-indent-increase-icon lucide-list-indent-increase"><path d="M21 5H11"/><path d="M21 12H11"/><path d="M21 19H11"/><path d="m3 8 4 4-4 4"/></svg>]],
-
   outdent = [[<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-indent-decrease-icon lucide-list-indent-decrease"><path d="M21 5H11"/><path d="M21 12H11"/><path d="M21 19H11"/><path d="m7 8-4 4 4 4"/></svg>]],
-
   moveup = [[<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-up-from-line-icon lucide-arrow-up-from-line"><path d="m18 9-6-6-6 6"/><path d="M12 3v14"/><path d="M5 21h14"/></svg>]],
-
   movedown = [[<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-from-line-icon lucide-arrow-down-from-line"><path d="M19 3H5"/><path d="M12 21V7"/><path d="m6 15 6 6 6-6"/></svg>]],
-
   fold = [[<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-fold-vertical-icon lucide-fold-vertical"><path d="M12 22v-6"/><path d="M12 8V2"/><path d="M4 12H2"/><path d="M10 12H8"/><path d="M16 12h-2"/><path d="M22 12h-2"/><path d="m15 19-3-3-3 3"/><path d="m15 5-3 3-3-3"/></svg>]],
-
   delete = [[<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-icon lucide-trash"><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>]],
-
   undo = [[<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-undo2-icon lucide-undo-2"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"/></svg>]],
-
   redo = [[<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-redo2-icon lucide-redo-2"><path d="m15 14 5-5-5-5"/><path d="M20 9H9.5A5.5 5.5 0 0 0 4 14.5A5.5 5.5 0 0 0 9.5 20H13"/></svg>]],
-
   highlight = [[<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-highlighter-icon lucide-highlighter"><path d="m9 11-6 6v3h9l3-3"/><path d="m22 12-4.6 4.6a2 2 0 0 1-2.8 0l-5.2-5.2a2 2 0 0 1 0-2.8L14 4"/></svg>]]
-  
   }
 
 -- 2. Menu Schema
@@ -367,17 +372,16 @@ local menus = {
         { icon = icons.headings, sub = "headings" },
         { icon = icons.check,    cmd = "Text: Toggle Task Item" },
         { icon = icons.list,     cmd = "Text: Toggle Bullet List" },
+        { separator = true },
         { icon = icons.indent,   cmd = "Editor: Indent"},
         { icon = icons.outdent,  cmd = "Editor: Outdent"},
         { icon = icons.moveup,   cmd = "Outline: Move Up"},
         { icon = icons.movedown, cmd = "Outline: Move Down"},
+        { separator = true },
         { icon = icons.delete,   cmd = "Delete Line"},
-        { icon = icons.fold,     cmd = "Outline: Toggle Fold"},
         { icon = icons.undo,     cmd = "Editor: Undo"},
         { icon = icons.redo,     cmd = "Editor: Redo"},
-    },
-    font = {
-        { icon = icons.bold,     cmd = "Text: Bold" },
+        { icon = icons.fold,     cmd = "Outline: Toggle Fold"},
     },
     headings = {
         { icon = icons.back,     sub = "main" },
@@ -388,11 +392,10 @@ local menus = {
     selection_menu = {
         { icon = icons.bold,     cmd = "Text: Bold" },
         { icon = icons.italic,   cmd = "Text: Italic" },
-        { icon = icons.link,     cmd = "Link: Add" },
         { icon = icons.quote,    cmd = "Text: Quote" },
         { icon = icons.check,    cmd = "Text: Toggle Task Item" },
         { icon = icons.list,     cmd = "Text: Toggle Bullet List" },
-        { icon = icons.highlight,    cmd = "Text: Marker" },
+        { icon = icons.highlight,cmd = "Text: Marker" },
         { icon = icons.delete,   cmd = "Delete Line"},
     }
 }
@@ -411,7 +414,7 @@ function renderMobileToolbar(menuKey)
 
         toolbar.addEventListener("click", function(e)
           editor.focus()
-            local btn = e.target.closest(".sb-fmttb-btn")
+            local btn = e.target.closest(".sb-mbtb-btn")
             if not btn then return end
             
             e.preventDefault()
@@ -432,12 +435,17 @@ function renderMobileToolbar(menuKey)
     local html = '<div class="sb-toolbar-row">'
     
     for _, item in ipairs(menuItems) do
+        if item.separator then
+            -- Render a visual divider instead of a button
+            html = html .. '<div class="sb-mbtb-separator"></div>'
+        else
         local action = item.sub and ("menu:" .. item.sub) or ("cmd:" .. item.cmd)
         local label  = item.cmd or item.sub
         html = html .. string.format(
-            '<button class="sb-fmttb-btn" data-action="%s" aria-label="%s">%s</button>',
+            '<button class="sb-mbtb-btn" data-action="%s" aria-label="%s">%s</button>',
             action, label, item.icon
         )
+        end
     end
     
     html = html .. '</div>'

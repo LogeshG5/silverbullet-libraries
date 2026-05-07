@@ -483,6 +483,10 @@ function destroyToolbar()
 end
 
 -- Execute
-initToolbar()
+-- Only show on mobile/small screens (optional check)
+local isMobile = js.window.innerWidth < 600 or js.window.navigator.userAgent:match("Android|iPhone|iPad")
+if isMobile then
+   initToolbar()
+end
 ```
 

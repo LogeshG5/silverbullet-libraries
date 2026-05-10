@@ -19,7 +19,7 @@ local PANEL_ID = "rhs"
 searcher.html = [[
 <body>
 <div id="search-panel">
-    <input type="text" id="search-input" placeholder="Search">
+    <input type="text" id="search-input" autofocus tabindex="1" placeholder="Search">
     <div id="search-options">
         <button id="match-case">Aa</button>
         <button id="match-whole-word">Ab</button>
@@ -83,6 +83,12 @@ searcher.script = [[
         document.documentElement.style.visibility = '';
         const panel = parent.document.querySelector('.sb-panel.]] .. PANEL_ID .. [[');
         if (panel) panel.style.visibility = '';
+        // Move focus here so it triggers after the panel is actually visible
+	setTimeout(() => {
+	    searchInput.focus();
+	    // Optional: select the text if you're pre-filling it from selection
+	    searchInput.select(); 
+	}, 100);
     };
 
     Promise.all([onStyleLoaded(mainCss), onStyleLoaded(explorerCss)]).then(reveal);
@@ -98,7 +104,6 @@ searcher.script = [[
     const matchWholeWordBtn = document.getElementById('match-whole-word');
     const useRegexBtn = document.getElementById('use-regex');
     
-    searchInput.focus();
     syscall('editor.getSelection').then((result) => {
       searchInput.value = result.text;
       if(result.text.length > 3) {
@@ -126,13 +131,17 @@ searcher.script = [[
         const useRegex = useRegexBtn.classList.contains('active');
 
         // Construct the rg command arguments
-        const rgArgs = ["-nbiu", "--type", "markdown"];
+        const rgArgs = ["-nbiu", "--column",  "--type", "markdown"];
         if (matchCase) rgArgs.push('--case-sensitive');
         if (matchWholeWord) rgArgs.push('--word-regexp');
         if(useRegex) rgArgs.push('--regexp');
+        rgArgs.push(searchTerm);
 
+        // Convert the JS array to a Lua table string format: {"arg1", "arg2"}
+        const luaArgs = `{${rgArgs.map(arg => `"${arg.replace(/"/g, '\\"')}"`).join(", ")}}`;
 
-        const command = `pcall(shell.run, "rg", {"-nbiu", "--type", "markdown", "${searchTerm}"})`;
+        // Construct and execute the command
+        const command = `pcall(shell.run, "rg", ${luaArgs})`;
         const rawResults = await syscall('lua.evalExpression',  `${command}`);
         
         const parsedResults = parseResults(rawResults.values[1].stdout);
@@ -144,13 +153,13 @@ searcher.script = [[
         const results = {};
         lines.forEach(line => {
             const parts = line.split(':');
-            if (parts.length >= 4) {
-                const [path, row, column, ...textParts] = parts;
+            if (parts.length >= 5) {
+                const [path, line, column, offset, ...textParts] = parts;
                 const text = textParts.join(':').trim();
                 if (!results[path]) {
                     results[path] = [];
                 }
-                results[path].push({ row, column, text });
+                results[path].push({ line, column, offset, text });
             }
         });
         return results;
@@ -171,10 +180,11 @@ searcher.script = [[
                 item.className = 'result-item';
                 item.dataset.path = path;
                 item.dataset.column = result.column;
+                item.dataset.offset = result.offset;
 
                 const lineSpan = document.createElement('span');
                 lineSpan.className = 'result-line';
-                lineSpan.textContent = ` ${result.row}:${result.column} `;
+                lineSpan.textContent = ` ${result.line} `;
                 item.appendChild(lineSpan);
 
                 const textSpan = document.createElement('span');
@@ -183,7 +193,8 @@ searcher.script = [[
                 item.appendChild(textSpan);
 
                 item.addEventListener('click', () => {
-                    const pathWithPosition = `${item.dataset.path}@${item.dataset.column}`;
+                    const position = String(parseInt(item.dataset.column, 10) + parseInt(item.dataset.offset, 10) - 1)
+                    const pathWithPosition = `${item.dataset.path}@${position}`;
                     syscall('editor.navigate', pathWithPosition, false, false)
                 });
 

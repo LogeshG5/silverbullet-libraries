@@ -17,6 +17,7 @@ A plug [silverbullet-formatter](https://github.com/LogeshG5/silverbullet-formatt
 
 ## Configuration
 
+Copy this configuration to your config file inside space-lua block
 ```lua
 config.set("formatter.replace", {
 
@@ -27,9 +28,9 @@ config.set("formatter.replace", {
   {"\\%*", "*"}, -- \* to *
   
   -- Asterisk list to hyphen list
-  {"%- %[ %] ", "- [ ] "}, -- Asterisk task
-  {"%- %[x%] ", "- [x] "},  -- Asterisk completed task
-  {"^%* ", "- "}, -- Asterisk list
+  {"%* %[ %] ", "- [ ] "}, -- Asterisk task
+  {"%* %[x%] ", "- [x] "},  -- Asterisk completed task
+  -- {"^%* ", "- "}, -- Asterisk list, commented as it is taken care by prettier
 
   -- Misc
   {":%*%*", "**:"}, -- :** to **: (spelling correction)
@@ -38,7 +39,7 @@ config.set("formatter.replace", {
 ```
 
 
-## Implementaion
+## Implementation
 
 ```space-lua
 -- priority: -1
@@ -57,8 +58,7 @@ end
 
 config.define("formatter.replace", schema.array(schema.array("string")))
 
-function formatter.cleanupLLMText()
-  local contents = editor.getText()
+function formatter.cleanupLLMText(contents)
 
   local protected = {}
   local placeholderIndex = 0
@@ -90,12 +90,13 @@ function formatter.cleanupLLMText()
     end)
   end
 
-  editor.setText(contents)
+  return contents
 end
 
 function formatter.formatDocument()
   local text = editor.getText()
-  local formattedText = formatter.formatText(text)
+  local formattedText = formatter.cleanupLLMText(text)
+  formattedText = formatter.formatText(formattedText)
   editor.setText(formattedText)
 end
 
@@ -106,13 +107,13 @@ function formatter.formatSelection()
   end
   local text = editor.getText()
   local selectedText = text.slice(selection.from, selection.to)
-  local formattedText = formatter.formatText(selectedText)
-  formattedText = text.substring(0, selection.from) + formattedText.slice(0, -1) + text.substring(selection.to)
+  local formattedText = formatter.cleanupLLMText(selectedText)
+  formattedText = formatter.formatText(formattedText)
+  formattedText = text.substring(0, selection.from) .. formattedText.slice(0, -1) .. text.substring(selection.to)
   editor.setText(formattedText)
 end
 
 function formatter.formatContext()
-  formatter.cleanupLLMText()
   local selection = editor.getSelection()
   if selection.from != selection.to then
     formatter.formatSelection()

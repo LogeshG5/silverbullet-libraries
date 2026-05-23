@@ -7,6 +7,16 @@ pageDecoration.prefix: "📚 "
 ## Tools
 
 ```#meta/library/remote
+name: "🧰 Mobile Toolbar"
+uri: github:LogeshG5/silverbullet-libraries/Mobile Toolbar.md
+website: https://github.com/LogeshG5/silverbullet-libraries/blob/main/Mobile Toolbar.md
+description: "Mobile Toolbar"
+---
+name: "📅 Annual Calendar"
+uri: github:LogeshG5/silverbullet-libraries/Annual Calendar.md
+website: https://github.com/LogeshG5/silverbullet-libraries/blob/main/Annual Calendar.md
+description: "Annual Calendar"
+---
 name: "🧹 Formatter"
 uri: github:LogeshG5/silverbullet-libraries/Formatter.md
 website: https://github.com/LogeshG5/silverbullet-libraries/blob/main/Formatter.md
@@ -21,6 +31,11 @@ name: "🔍︎ RG Search"
 uri: github:LogeshG5/silverbullet-libraries/RG Search.md
 website: https://github.com/LogeshG5/silverbullet-libraries/blob/main/RG Search.md
 description: "Search with RG"
+---
+name: "🎨 Base16 Theme"
+uri: github:LogeshG5/silverbullet-libraries/Base16 Theme.md
+website: https://github.com/LogeshG5/silverbullet-libraries/blob/main/Base16 Theme.md
+description: "Configurable Theme with Base16 Colors"
 ---
 name: "➕ Auto Fold Frontmatter"
 uri: github:LogeshG5/silverbullet-libraries/Auto Fold Frontmatter.md
@@ -51,16 +66,6 @@ name: "👁️‍🗨️ Toggle Title Bar Visibility"
 uri: github:LogeshG5/silverbullet-libraries/Toggle Title Bar Visibility.md
 website: https://github.com/LogeshG5/silverbullet-libraries/blob/main/Toggle Title Bar Visibility.md
 description: "Toggle Title Bar Visibility"
----
-name: "🧰 Mobile Toolbar"
-uri: github:LogeshG5/silverbullet-libraries/Mobile Toolbar.md
-website: https://github.com/LogeshG5/silverbullet-libraries/blob/main/Mobile Toolbar.md
-description: "Mobile Toolbar"
----
-name: "🎨 Base16 Theme"
-uri: github:LogeshG5/silverbullet-libraries/Base16 Theme.md
-website: https://github.com/LogeshG5/silverbullet-libraries/blob/main/Base16 Theme.md
-description: "Configurable Theme with Base16 Colors"
 ---
 name: "📝 Git"
 uri: github:LogeshG5/silverbullet-libraries/Git.md

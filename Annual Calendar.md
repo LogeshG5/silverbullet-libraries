@@ -8,6 +8,54 @@ files:
 
 # Annual Calendar
 
+This plugin allows you to build and visualize a full-year calendar dynamically by writing a simple list of events and groups directly in your space.
+
+## How to Use
+
+To display items on your Annual Calendar, you just need to create a list in your workspace. You tag events using #CalEvent and style them into categories using #CalGroup.
+
+### 📅 Defining Events (#CalEvent)
+
+Every event must be a list item ending with the #CalEvent tag. You can specify single dates, multi-day ranges, and recurring annual events using bracketed attributes [...].
+
+1. Fixed Date Events (One-time)
+
+For specific holidays or events that change dates every year, provide the full DD-MM-YYYY format.
+
+```Markdown
+* Festival [startDate: "17-07-2026"] [group: "Holiday"] #CalEvent
+```
+
+2. Recurring Annual Events
+
+For events that happen on the exact same date every single year (like birthdays or fixed national holidays), omit the year and just use DD-MM.
+
+```Markdown
+* 🎂 My Birthday [startDate: "04-07"] [group: "Personal"] #CalEvent
+```
+
+3. Multi-Day Events
+
+To stretch an event across multiple days, include an endDate. This works with both recurring and fixed dates.
+
+```Markdown
+* Pongal [startDate: "14-01"] [endDate: "15-01"] [group: "Holiday"] #CalEvent
+```
+
+### 🎨 Organizing with Groups (#CalGroup)
+
+Groups allow you to color-code your calendar so you can distinguish between work, holidays, and personal life at a glance. Define them anywhere in your list using the #CalGroup tag.
+
+```Markdown
+* Holiday [color: "rgba(158, 206, 106, 0.50)"] #CalGroup
+* Personal [color: "rgba(187, 154, 247, 0.50)"] #CalGroup
+* Work [color: "rgba(122, 162, 247, 0.50)"] #CalGroup
+```
+Holiday is a special group as Holiday events will highlight the day with a light green background like weekends.
+
+💡 Pro-Tip on Colors: The system accepts standard rgba color values. Keeping the alpha channel (the last number, e.g., 0.50) semi-transparent ensures that your calendar text remains easy to read when highlighted!
+
+## Implementation
 
 ```space-lua
 command.define {

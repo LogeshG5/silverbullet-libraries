@@ -8,6 +8,40 @@ files:
 
 # RG Search
 
+## Prerequisites: Installing `rg` (Ripgrep)
+
+This feature relies on `rg` (Ripgrep) to perform blazing-fast searches across your space. Before you can use it, you need to ensure `rg` is installed in your environment.
+
+## 💻 1. Local System Installation
+
+If you run the application directly on your local computer, you must install `rg` using your system's package manager:
+
+* **macOS (Homebrew):** `brew install ripgrep`
+* **Windows (Scoop):** `scoop install ripgrep`
+* **Linux (Ubuntu/Debian):** `sudo apt-get install ripgrep`
+
+---
+
+## 🐋 2. Docker Installation
+
+If you are running the application inside a Docker container, you can automate the installation using a startup script file so it persists whenever the container boots.
+
+1. **Create the boot script file:** Root directory.
+
+Create a new file named exactly `CONTAINER_BOOT.md` and place it in the **root** of your space.
+
+2. **Add the installation command:** Edit file.
+
+Open the file and add the following line to install the package automatically on startup:
+
+```bash
+apk add ripgrep
+```
+
+*(Note: If your specific base image uses Alpine Linux, `apk add rg` or `apk add ripgrep` will handle fetching the binary).*
+
+3. **Restart your container:** Apply changes.
+Restart your Docker container to trigger the boot script and initialize the tool.
 
 ## Implementation
 

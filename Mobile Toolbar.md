@@ -273,7 +273,7 @@ end
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 99; /* SB modals are at 100 */
     background: var(--root-background-color);
     border-top: 1px solid var(--top-border-color);
     display: flex;

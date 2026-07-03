@@ -88,6 +88,7 @@ body {
   outline: none;
   font-size: 14px;
   font-family: var(--ui-font);
+  margin: 1px 5px;
 }
 
 .search-input:focus {

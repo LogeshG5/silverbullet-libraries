@@ -58,10 +58,31 @@ Holiday is a special group as Holiday events will highlight the day with a light
 ## Implementation
 
 ```space-lua
+local function closeAnnualCalendar()
+  local annualCalendarVisible = editor.getUiOption("annualCalendarVisible")
+  if not annualCalendarVisible then return end
+  editor.invokeCommand("Editor: Toggle Title Bar Visibility")
+  local wasRoChanged = editor.getUiOption("changedROMode")
+  if wasRoChanged then 
+    editor.setUiOption("changedROMode", false)
+    editor.setUiOption("forcedROMode", false)
+    editor.rebuildEditorState()
+  end
+  editor.setUiOption("annualCalendarVisible", false)
+  editor.hidePanel("modal")
+end
+
+event.listen {
+    name = "editor:pageLoaded",
+    run = function(e)
+      closeAnnualCalendar() -- close panel when back button is pressed in mobile that changes page
+    end
+}
+
 command.define {
   name = "Show Annual Calendar",
   run = function()
-  
+
     local panzoomlib = [[
 	/**
 * Panzoom 4.6.2 for panning and zooming elements using CSS transforms
@@ -733,8 +754,7 @@ const MAX_LANES_COLLAPSED = 2;
         buildCalendar();
         initializePanZoom();
 
-        const closeButton = document.getElementById('closeButton');
-        closeButton.addEventListener('click', async () => {
+        async function closeAnnualCalendar() {
             if (typeof syscall !== 'undefined') {
                 syscall("editor.invokeCommand", "Editor: Toggle Title Bar Visibility");
                 
@@ -744,13 +764,16 @@ const MAX_LANES_COLLAPSED = 2;
 					await syscall("editor.setUiOption", "forcedROMode", false);
 					await syscall("editor.rebuildEditorState");
 				}
+                                await syscall("editor.setUiOption", "annualCalendarVisible", false);
 				await syscall("editor.hidePanel", "modal");
             } else {
                 console.log("Close button clicked - syscall not available.");
             }
-        });
+        }
 
-		]]
+        const closeButton = document.getElementById('closeButton');
+        closeButton.addEventListener('click', async () => closeAnnualCalendar());
+    ]]
 
     local groups = query[[from p = index.tag "item" where table.includes(p.itags, "CalGroup") select p.ref, p.name, p.color]]
     groupsjs = "const groupsList = " .. js.stringify(js.tojs(groups)) .. ";"
@@ -760,6 +783,7 @@ const MAX_LANES_COLLAPSED = 2;
 
     scripted = groupsjs .. eventsjs .. panzoomlib .. script
     editor.showPanel("modal", 1, html, scripted)
+    editor.setUiOption("annualCalendarVisible", true)
     editor.invokeCommand("Editor: Toggle Title Bar Visibility")
 	
 	editor.setUiOption("changedROMode", false)
@@ -769,7 +793,7 @@ const MAX_LANES_COLLAPSED = 2;
 		editor.setUiOption("changedROMode", true)
 		editor.rebuildEditorState()
 	end
-    
   end
 }
 ```
+

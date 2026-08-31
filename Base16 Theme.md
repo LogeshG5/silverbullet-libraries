@@ -1,5 +1,5 @@
 ---
-name: "Library/LogeshG5/Base16 Theme"
+Name: "Library/LogeshG5/Base16 Theme"
 tags: meta/library
 pageDecoration.prefix: "🎨 "
 ---
@@ -8,13 +8,10 @@ pageDecoration.prefix: "🎨 "
 
 ## Base 16 Variables
 
-Copy one of the theme to your space-style config.
+### EVA Dark
 
-Hint: Give the variables to AI to generate your own theme
-
-```css
+```space-style-disabled
 /* priority: 1 */
-/* Eva Dark */
 html {
    --base00: #f8f8f8;
    --base01: #e8e8e8;
@@ -24,119 +21,108 @@ html {
    --base05: #383838;
    --base06: #282828;
    --base07: #181818;
-   --base08: #ab4642;
+   --base08: #86c1b9;
    --base09: #dc9656;
-   --base0a: #f7ca88;
-   --base0b: #a1b56c;
-   --base0c: #86c1b9;
-   --base0d: #7cafc2;
-   --base0e: #ba8baf;
-   --base0f: #a16946;
+   --base0A: #f7ca88;
+   --base0B: #a1b56c;
+   --base0C: #86c1b9;
+   --base0D: #7cafc2;
+   --base0E: #ba8baf;
+   --base0F: #a16946;
    color-scheme: light;
 }
 html[data-theme="dark"] {
-   --base00: #1c2128;
-   --base01: #373e47;
-   --base02: #444c56;
-   --base03: #545d68;
-   --base04: #768390;
-   --base05: #909dab;
-   --base06: #adbac7;
-   --base07: #cdd9e5;
-   --base08: #f47067;
-   --base09: #e0823d;
-   --base0a: #c69026;
-   --base0b: #57ab5a;
-   --base0c: #96d0ff;
-   --base0d: #539bf5;
-   --base0e: #e275ad;
-   --base0f: #ae5622;
-   color-scheme: dark;
+  /* Backgrounds */
+  --base00: #181a1f; /* Darkest */
+  --base01: #21252b; /* Sidebar */
+  --base02: #373e47; /* Highlight / Selection */
+  --base03: #676e95; /* Comment / Muted */
+  --base04: #5c617d; /* Subtle */
+
+  /* Text */
+  --base05: #9da5b3; /* Main Editor */
+  --base06: #b0b7c3; /* Default / Main */
+  --base07: #d7dae0; /* Bright */
+
+  /* Syntax & Accents */
+  --base08: #96d0ff; /* Red / Error  changed to blue*/
+  --base09: #ff9070; /* Orange / Coral */
+  --base0A: #e4bf7f; /* Yellow */
+  --base0B: #98c379; /* Green */
+  --base0C: #56b7c3; /* Cyan */
+  --base0D: #96d0ff; /* Primary Accent / subtle Blue */
+  --base0E: #e275ad; /* Purple changed to pink*/
+  --base0F: #cf68e1; /* Magenta */
+
+  /* Extended UI Elements  -- Not Used*/
+  --base10: #23272f; /* Dropdown */
+  --base11: #282c34; /* Main Background */
+  --base12: #f14c4c; /* Bright Red */
+  --base13: #ff8a4c; /* Bright Orange */
+  --base14: #3ec141; /* Bright Green */
+  --base15: #56b7c3; /* Bright Cyan */
+  --base16: #6495ee; /* Bright Blue */
+  --base17: #cf68e1; /* Bright Magenta */
 }
 ```
 
-```css
+### Tokyo Night Dark
+
+```space-style-disabled
 /* priority: 1 */
-/* tokyo-night */
-html {
-   --base00: #f8f8f8;
-   --base01: #e8e8e8;
-   --base02: #d8d8d8;
-   --base03: #b8b8b8;
-   --base04: #585858;
-   --base05: #383838;
-   --base06: #282828;
-   --base07: #181818;
-   --base08: #ab4642;
-   --base09: #dc9656;
-   --base0a: #f7ca88;
-   --base0b: #a1b56c;
-   --base0c: #86c1b9;
-   --base0d: #7cafc2;
-   --base0e: #ba8baf;
-   --base0f: #a16946;
-   color-scheme: light;
+/* Tokyo Night */
+html[data-theme="light"] {
+  --base00: #d5d6db;
+  --base01: #cbccd1;
+  --base02: #dfe0e5;
+  --base03: #9699a3;
+  --base04: #4c505e;
+  --base05: #343b59;
+  --base06: #1a1b26;
+  --base07: #1a1b26;
+  --base08: #343b59;
+  --base09: #965027;
+  --base0A: #166775;
+  --base0B: #485e30;
+  --base0C: #3e6968;
+  --base0D: #34548a;
+  --base0E: #5a4a78;
+  --base0F: #8c4351;
+  --base10: #e9e9ed;
+  --base11: #f7f7f9;
+  --base12: #8c4351;
+  --base13: #965027;
+  --base14: #485e30;
+  --base15: #3e6968;
+  --base16: #34548a;
+  --base17: #5a4a78;
 }
+
 html[data-theme="dark"] {
-  --base00: #1a1b26; /* background */
+  --base00: #1a1b26;
   --base01: #16161e;
-  --base02: #2f3549;
-  --base03: #444b6a;
-  --base04: #787c99;
-  --base05: #a9b1d6; /* default text */
-  --base06: #cbccd1;
-  --base07: #d5d6db;
-  --base08: #f7768e; /* red */
-  --base09: #ff9e64; /* orange */
-  --base0a: #e0af68; /* yellow */
-  --base0b: #9ece6a; /* green */
-  --base0c: #7dcfff; /* cyan */
-  --base0d: #7aa2f7; /* blue */
-  --base0e: #bb9af7; /* purple */
-  --base0f: #d18616; /* brown */
-  color-scheme: dark;
-}
-```
-
-```css
-/* priority: 1 */
-/* Catpuchin-mocha */
-html {
-  --base00: #eff1f5; /* base */
-  --base01: #e6e9ef; /* mantle */
-  --base02: #ccd0da; /* surface0 */
-  --base03: #bcc0cc; /* surface1 */
-  --base04: #acb0be; /* surface2 */
-  --base05: #4c4f69; /* text */
-  --base06: #dc8a78; /* rosewater */
-  --base07: #7287fd; /* lavender */
-  --base08: #d20f39; /* red */
-  --base09: #fe640b; /* peach */
-  --base0a: #df8e1d; /* yellow */
-  --base0b: #40a02b; /* green */
-  --base0c: #179299; /* teal */
-  --base0d: #1e66f5; /* blue */
-  --base0e: #8839ef; /* mauve */
-  --base0f: #dd7878; /* flamingo */
-  color-scheme: light;
-}
-html[data-theme="dark"] {
-  --base00: #1e1e2e; /* base */
-  --base01: #181825; /* mantle */
-  --base02: #313244; /* surface0 */
-  --base03: #45475a; /* surface1 */
-  --base04: #585b70; /* surface2 */
-  --base05: #cdd6f4; /* text */
-  --base06: #f5e0dc; /* rosewater */
-  --base07: #b4befe; /* lavender */
-  --base08: #f38ba8; /* red */
-  --base09: #fab387; /* peach */
-  --base0a: #f9e2af; /* yellow */
-  --base0b: #a6e3a1; /* green */
-  --base0c: #94e2d5; /* teal */
-  --base0d: #89b4fa; /* blue */
-  --base0e: #cba6f7; /* mauve */
-  --base0f: #f2cdcd; /* flamingo */
+  --base02: #292e42;
+  --base03: #565f89;
+  --base04: #414868;
+  --base05: #c0caf5;
+  --base06: #a9b1d6;
+  --base07: #ffffff;
+  --base08: #f7768e;
+  --base09: #ff9e64;
+  --base0A: #e0af68;
+  --base0B: #9ece6a;
+  --base0C: #7dcfff;
+  --base0D: #7aa2f7;
+  --base0E: #bb9af7;
+  --base0F: #9d7cd8;
+  --base10: #1f2335;
+  --base11: #3b4261;
+  --base12: #2ac3de;
+  --base13: #b4f9f8;
+  --base14: #24283b;
+  --base15: #737aa2;
+  --base16: #ff007c;
+  --base17: #101014;
   color-scheme: dark;
 }
 ```
@@ -144,167 +130,247 @@ html[data-theme="dark"] {
 ## CSS Variables Mapping
 
 ```space-style
-/* priority: 10 */
-/* -------------------------------------------------------------- */
+/* priority: 1 */
 html,
+html[data-theme="light"],
 html[data-theme="dark"] {
-   --ui-accent-color: var(--base0c);
-   --ui-accent-text-color: var(--ui-accent-color);
-   --ui-accent-contrast-color: var(--base00);
-   --highlight-color: color-mix(in srgb, var(--base0a), transparent 50%);
-   --link-color: var(--base0c);
-   --link-missing-color: var(--base09);
-   --link-invalid-color: var(--base0e);
-   --meta-color: var(--base08);
-   --meta-subtle-color: var(--base04);
-   --subtle-color: var(--base04);
-   --subtle-background-color: color-mix(in srgb, var(--base01), transparent 50%);
-   --root-background-color: var(--base00);
-   --root-color: var(--base05);
-   --top-color: inherit;
-   --top-background-color: var(--base00);
-   --top-border-color: var(--base02);
-   --top-sync-error-color: var(--top-color);
-   --top-sync-error-background-color: var(--base08);
-   --top-saved-color: var(--base05);
-   --top-unsaved-color: var(--base04);
-   --top-loading-color: var(--base04);
-   --panel-background-color: var(--base00);
-   --panel-border-color: var(--base00);
-   --bhs-background-color: var(--base00);
-   --bhs-border-color: var(--base03);
-   --modal-color: inherit;
-   --modal-background-color: var(--base00);
-   --modal-border-color: var(--base03);
-   --modal-header-label-color: var(--ui-accent-text-color);
-   --modal-help-background-color: var(--base01);
-   --modal-help-color: var(--base04);
-   --modal-selected-option-background-color: var(--base0c);
-   --modal-selected-option-color: var(--ui-accent-contrast-color);
-   --modal-hint-background-color: var(--base0d);
-   --modal-hint-color: var(--base00);
-   --modal-hint-inactive-background-color: var(--base01);
-   --modal-hint-inactive-color: var(--base05);
-   --modal-description-color: var(--base04);
-   --modal-selected-option-description-color: var(--base02);
-   --notifications-background-color: inherit;
-   --notifications-border-color: var(--base03);
-   --notification-info-background-color: var(--base01);
-   --notification-error-background-color: var(--base08);
-   --button-background-color: var(--base01);
-   --button-hover-background-color: inherit;
-   --button-color: var(--base05);
-   --button-border-color: var(--base03);
-   --primary-button-background-color: var(--ui-accent-color);
-   --primary-button-hover-background-color: color-mix( in srgb, var(--ui-accent-color), var(--base00) 35% );
-   --primary-button-color: var(--ui-accent-contrast-color);
-   --primary-button-border-color: transparent;
-   --text-field-background-color: var(--button-background-color);
-   --progress-background-color: var(--base01);
-   --progress-sync-color: var(--base05);
-   --progress-index-color: var(--base0d);
-   --action-button-background-color: transparent;
-   --action-button-color: var(--base05);
-   --action-button-hover-color: var(--base0d);
-   --action-button-active-color: var(--base0d);
-   --editor-caret-color: var(--base05);
-   --editor-selection-background-color: color-mix(in srgb, var(--base0c), transparent 65%);
-   --editor-panels-bottom-color: inherit;
-   --editor-panels-bottom-background-color: var(--base01);
-   --editor-panels-bottom-border-color: var(--base02);
-   --editor-completion-detail-color: var(--base04);
-   --editor-completion-detail-selected-color: var(--base02);
-   --editor-list-bullet-color: var(--base04);
-   --editor-heading-color: var(--base05);
-   --editor-heading-meta-color: var(--meta-subtle-color);
-   --editor-hashtag-background-color: color-mix(in srgb, var(--base0c), transparent 65%);
-   --editor-hashtag-color: var(--base06);
-   --editor-hashtag-border-color: color-mix(in srgb, var(--base0d), transparent 58%);
-   --editor-ruler-color: var(--base04);
-   --editor-naked-url-color: var(--link-color);
-   --editor-code-color: var(--base04);
-   --editor-link-color: var(--link-color);
-   --editor-link-url-color: var(--link-color);
-   --editor-link-meta-color: var(--meta-subtle-color);
-   --editor-wiki-link-page-background-color: color-mix(in srgb, var(--base0d), transparent 93%);
-   --editor-wiki-link-page-color: var(--link-color);
-   --editor-wiki-link-page-missing-color: var(--link-missing-color);
-   --editor-wiki-link-page-invalid-color: var(--link-invalid-color);
-   --editor-wiki-link-color: var(--base0d);
-   --editor-command-button-color: inherit;
-   --editor-command-button-background-color: var(--base01);
-   --editor-command-button-hover-background-color: inherit;
-   --editor-command-button-meta-color: var(--meta-subtle-color);
-   --editor-command-button-border-color: var(--base03);
-   --editor-line-meta-color: var(--meta-subtle-color);
-   --editor-meta-color: var(--meta-color);
-   --editor-table-head-background-color: var(--base05);
-   --editor-table-head-color: var(--base00);
-   --editor-table-even-background-color: var(--base01);
-   --editor-blockquote-background-color: var(--subtle-background-color);
-   --editor-blockquote-color: var(--subtle-color);
-   --editor-blockquote-border-color: var(--base04);
-   --editor-struct-color: var(--base08);
-   --editor-highlight-background-color: var(--highlight-color);
-   --editor-code-background-color: color-mix(in srgb, var(--base01), transparent 50%);
-   --editor-code-comment-color: var(--meta-subtle-color);
-   --editor-code-variable-color: var(--base0c);
-   --editor-code-typename-color: var(--base0d);
-   --editor-code-string-color: var(--base0b);
-   --editor-code-number-color: var(--base0e);
-   --editor-code-operator-color: var(--base04);
-   --editor-code-info-color: var(--subtle-color);
-   --editor-code-atom-color: var(--base08);
-   --editor-frontmatter-background-color: color-mix(in srgb, var(--base03), transparent 85%);
-   --editor-frontmatter-color: var(--subtle-color);
-   --editor-frontmatter-marker-color: color-mix(in srgb, var(--base08), transparent 50%);
-   --editor-widget-background-color: var(--base01);
-   --editor-task-marker-color: var(--subtle-color);
-   --editor-task-state-color: var(--subtle-color);
-   --editor-directive-mark-color: var(--base08);
-   --editor-directive-color: var(--base04);
-   --editor-directive-background-color: color-mix(in srgb, var(--base01), transparent 51%);
+  /* ----------------------------------------------------
+     Core Branding & Accents
+     ---------------------------------------------------- */
+  --ui-accent-color: var(--base0D); /* Primary Accent (Blue) */
+  --ui-accent-text-color: var(--base0D);
+  --ui-accent-contrast-color: var(--base00); /* Text on accent background */
+  --highlight-color: color-mix(in srgb, var(--base0A) 40%, transparent); /* Highlight (Yellow) */
+  --link-color: var(--base0D);
+  --link-missing-color: var(--base09); /* Missing link (Orange) */
+  --link-invalid-color: var(--base08); /* Invalid link (Red) */
+  --meta-color: var(--base0F);         /* Structure/Meta (Brown/Dark Red) */
+  --meta-subtle-color: var(--base03);  /* Muted metadata (Comments/Gray) */
+  --subtle-color: var(--base04);       /* Secondary layout text */
+  --subtle-background-color: color-mix(in srgb, var(--base03) 12%, transparent);
+
+  /* ----------------------------------------------------
+     Main Layout Canvas
+     ---------------------------------------------------- */
+  --root-background-color: var(--base00); /* Core Canvas Background */
+  --root-color: var(--base05);            /* Core Text Foreground */
+
+  /* Top Status & Navigation Bar */
+  --top-color: var(--base05);
+  --top-background-color: var(--base01);
+  --top-border-color: var(--base02);
+  --top-sync-error-color: var(--base08);
+  --top-sync-error-background-color: color-mix(in srgb, var(--base08) 15%, transparent);
+  --top-saved-color: var(--base06);
+  --top-unsaved-color: var(--base03);
+  --top-loading-color: var(--base04);
+
+  /* Workspace Panels & Sidebar */
+  --panel-background-color: var(--base00);
+  --panel-border-color: var(--base02);
+  --bhs-background-color: var(--base00);
+  --bhs-border-color: var(--base02);
+
+  /* ----------------------------------------------------
+     Modals, Popovers & Commands
+     ---------------------------------------------------- */
+  --modal-color: var(--base05);
+  --modal-background-color: var(--base01);
+  --modal-border-color: var(--base03);
+  --modal-backdrop-color: color-mix(in srgb, var(--base00) 50%, transparent);
+  --modal-header-label-color: var(--ui-accent-text-color);
+  --modal-help-background-color: var(--base02);
+  --modal-help-color: var(--base05);
+  --modal-selected-option-background-color: var(--ui-accent-color);
+  --modal-selected-option-color: var(--ui-accent-contrast-color);
+  --modal-hint-background-color: var(--base02);
+  --modal-hint-color: var(--base05);
+  --modal-hint-inactive-background-color: var(--base01);
+  --modal-hint-inactive-color: var(--base04);
+  --modal-description-color: var(--base04);
+  --modal-selected-option-description-color: var(--base06);
+
+  /* Toast & App Notifications */
+  --notifications-background-color: var(--base01);
+  --notifications-border-color: var(--base02);
+  --notification-info-background-color: color-mix(in srgb, var(--base0D) 20%, var(--base00));
+  --notification-error-background-color: color-mix(in srgb, var(--base08) 20%, var(--base00));
+  --notification-warning-background-color: color-mix(in srgb, var(--base09) 20%, var(--base00));
+
+  /* ----------------------------------------------------
+     Interactive UI Elements (Buttons & Inputs)
+     ---------------------------------------------------- */
+  --button-background-color: var(--base02);
+  --button-hover-background-color: var(--base03);
+  --button-color: var(--base05);
+  --button-border-color: var(--base03);
+
+  --primary-button-background-color: var(--ui-accent-color);
+  --primary-button-hover-background-color: color-mix(in srgb, var(--ui-accent-color) 85%, var(--base05));
+  --primary-button-color: var(--ui-accent-contrast-color);
+  --primary-button-border-color: transparent;
+
+  --text-field-background-color: var(--button-background-color);
+
+  --progress-background-color: var(--base02);
+  --progress-sync-color: var(--base05);
+  --progress-index-color: var(--base0D);
+
+  --action-button-background-color: transparent;
+  --action-button-color: var(--base04);
+  --action-button-hover-color: var(--base0D);
+  --action-button-active-color: var(--base0D);
+
+  /* ----------------------------------------------------
+     The Markdown Editor Workspace
+     ---------------------------------------------------- */
+  --editor-caret-color: var(--base05);
+  --editor-selection-background-color: var(--base02);
+  --editor-panels-bottom-color: var(--base05);
+  --editor-panels-bottom-background-color: var(--base01);
+  --editor-panels-bottom-border-color: var(--base02);
+  --editor-completion-detail-color: var(--base04);
+  --editor-completion-detail-selected-color: var(--base06);
+  --editor-list-bullet-color: var(--base03);
+  --editor-heading-color: var(--base0D);
+  --editor-heading-meta-color: var(--meta-subtle-color);
+  --editor-ruler-color: var(--base02);
+
+  /* Tags & Links */
+  --editor-hashtag-background-color: color-mix(in srgb, var(--base0E) 15%, transparent);
+  --editor-hashtag-color: var(--base0E);
+  --editor-hashtag-border-color: color-mix(in srgb, var(--base0E) 30%, transparent);
+  --editor-naked-url-color: var(--link-color);
+  --editor-link-color: var(--link-color);
+  --editor-link-url-color: var(--link-color);
+  --editor-link-meta-color: var(--meta-subtle-color);
+  --editor-wiki-link-page-background-color: color-mix(in srgb, var(--base0D) 8%, transparent);
+  --editor-wiki-link-page-color: var(--link-color);
+  --editor-wiki-link-page-missing-color: var(--link-missing-color);
+  --editor-wiki-link-page-invalid-color: var(--link-invalid-color);
+  --editor-wiki-link-color: var(--base0C);
+
+  /* Inline Code & Markdown Tables */
+  --editor-code-color: var(--base0B);
+  --editor-code-background-color: var(--subtle-background-color);
+  --editor-table-head-background-color: var(--base02);
+  --editor-table-head-color: var(--base05);
+  --editor-table-even-background-color: color-mix(in srgb, var(--base01) 40%, transparent);
+  --editor-blockquote-background-color: var(--subtle-background-color);
+  --editor-blockquote-color: var(--subtle-color);
+  --editor-blockquote-border-color: var(--base03);
+  --editor-highlight-background-color: var(--highlight-color);
+
+  /* Commands & Directives */
+  --editor-command-button-color: var(--base05);
+  --editor-command-button-background-color: var(--base02);
+  --editor-command-button-hover-background-color: var(--base03);
+  --editor-command-button-meta-color: var(--meta-subtle-color);
+  --editor-command-button-border-color: var(--base03);
+  --editor-line-meta-color: var(--meta-subtle-color);
+  --editor-meta-color: var(--meta-color);
+  --editor-directive-mark-color: var(--base0E);
+  --editor-directive-color: var(--base04);
+  --editor-directive-background-color: var(--subtle-background-color);
+
+  /* Code Blocks & Token Highlighting */
+  --editor-struct-color: var(--base0E);
+  --editor-code-comment-color: var(--base03);
+  --editor-code-variable-color: var(--base08);
+  --editor-code-typename-color: var(--base0A);
+  --editor-code-string-color: var(--base0B);
+  --editor-code-number-color: var(--base09);
+  --editor-code-operator-color: var(--base0C);
+  --editor-code-info-color: var(--subtle-color);
+  --editor-code-atom-color: var(--base09);
+
+  /* Frontmatter YAML Metadata */
+  --editor-frontmatter-background-color: color-mix(in srgb, var(--base0F) 8%, transparent);
+  --editor-frontmatter-color: var(--subtle-color);
+  --editor-frontmatter-marker-color: var(--base0F);
+
+  /* Miscellaneous Widgets & Checkboxes */
+  --editor-widget-background-color: var(--base02);
+  --editor-task-marker-color: var(--subtle-color);
+  --editor-task-state-color: var(--subtle-color);
+
+  /* Context Input & Dynamic Sliders */
+  --editor-panels-bottom-input-background-color: var(--base00);
+  --editor-panels-bottom-button-background-image: linear-gradient(var(--base02), var(--base01));
+  --editor-panels-bottom-button-active-background-image: linear-gradient(var(--base01), var(--base03));
+
+  /* Layout Typography Constraints */
    --ui-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
    --editor-font: "Consolas", "iA-Mono", "Menlo";
-   --editor-width: 900px;
-  /* Admonitions */
-   --admonition-width: 1.25rem;
+   --editor-width: 1200px;
+
+
+  /* ----------------------------------------------------
+     Alerts & Shared Component Tokens
+     ---------------------------------------------------- */
+  --danger-color: var(--base08);
+  --danger-contrast-color: var(--base00);
+  --success-color: var(--base0B);
+
+  --alert-error-background-color: color-mix(in srgb, var(--base08) 10%, transparent);
+  --alert-error-color: var(--base08);
+  --alert-error-border-color: color-mix(in srgb, var(--base08) 25%, transparent);
+
+  --alert-warning-background-color: color-mix(in srgb, var(--base09) 10%, transparent);
+  --alert-warning-color: var(--base09);
+  --alert-warning-border-color: color-mix(in srgb, var(--base09) 25%, transparent);
+
+  --alert-info-background-color: color-mix(in srgb, var(--base0D) 10%, transparent);
+  --alert-info-color: var(--base0D);
+  --alert-info-border-color: color-mix(in srgb, var(--base0D) 25%, transparent);
+
+  --badge-background-color: color-mix(in srgb, var(--base0D) 15%, transparent);
+  --badge-color: var(--base0D);
 }
 
+/* Base structural theme triggers for color scheme signaling */
+html[data-theme="light"] { color-scheme: light; }
+html[data-theme="dark"]  { color-scheme: dark; }
 ```
 
 ## Style Customizations
+
+### Headings
 
 ```space-style
 /* Editor colors */
 /* -------------------------------------------------------------- */
 #sb-editor {
   .sb-line-h1 > span {
-    color: var(--base0b);
+    color: var(--base0B);
   }
   .sb-line-h2 {
-    color: var(--base0a);
+    color: var(--base0A);
     font-size: 18px;
   }
   .sb-line-h3 {
-    color: var(--base0e);
+    color: var(--base0E);
   }
   .sb-line-h4 {
-    color: var(--base0d);
+    color: var(--base0D);
   }
   .sb-line-h5 {
-    color: var(--base0c);
+    color: var(--base0C);
   }
   .sb-line-h6 {
-    color: var(--base0f);
+    color: var(--base0F);
   }
 }
+```
 
+### Scrollbar
+
+```space-style
 /* scrollbar */
 /* -------------------------------------------------------------- */
 ::-webkit-scrollbar {
  width: 15px;
- background: hsla(0,0%,100%,.04);
+ background: var(--base01);
 }
 
 ::-webkit-scrollbar-track {
@@ -313,96 +379,18 @@ html[data-theme="dark"] {
 }
 
 ::-webkit-scrollbar-thumb {
- -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
- background: hsla(0,0%,100%,.14);
+ background: var(--base02);
 }
+```
 
-/* Modal */
-/* -------------------------------------------------------------- */
-.sb-modal-box {
-  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.85) !important;
-  border: none !important;
-  backdrop-filter: blur(16px);
-  margin-top: 80px !important;
-  font-size: large;
-  margin-top: 80px !important;
-  font-size: large;
+### Find & Replace
 
-  .sb-header label {
-
-  }
-  .sb-help-text {
-    font-size: 0.8em;
-    cursor: default;
-    background-color: var(--subtle-background-color) !important;
-    /*color: var(--subtext0) !important;*/
-  }
-  .sb-hint {
-     font-size: 0.7em;
-  }
-  .sb-result-list {
-    margin: 0.2em 0;
-  }
-  #mini-editor.svelte-umhpev {
-    caret-color: #aaaaaa;
-  }
-}
-.ͼ2 .cm-content {
-  caret-color: #aaaaaa;
-}
-#sb-top {
-    color: var(--top-color);
-    background-color: var(--top-background-color);
-    border-bottom: color-mix(in srgb, var(--top-border-color) 30%, transparent) 1px solid;
-}
-
-
-/* Bottom Widget: Linked Mentions */
-/* -------------------------------------------------------------- */
-#sb-main .cm-editor .sb-lua-bottom-widget blockquote {
-    margin: 0 5px;
-    padding: 12px;
-    border: 1px solid var(--editor-widget-background-color);
-    border-radius: 8px;
-    background-color: var(--editor-widget-background-color);
-    color: var(--editor-text-color);
-    border-top: 1px solid var(--editor-widget-background-color);
-}
-#sb-main .cm-editor .sb-lua-bottom-widget h1 {
-    margin: -10px -10px 10px -10px !important;
-    padding: 15px 10px !important;
-    background: none;
-    font-size: 1.2em;
-}
-
-#sb-main .cm-editor .sb-lua-top-widget h1, #sb-main .cm-editor .sb-lua-bottom-widget h1 {
-    margin: -10px -10px 1px -10px !important;
-    padding: 5px 10px !important;
-    background-color: transparent;
-    font-size: 1.2em;
-}
-
-/* Admonition styling */
-/* -------------------------------------------------------------- */
-.sb-admonition[admonition="note"] .sb-admonition-type::before { width: var(--admonition-width) !important; }
-.sb-admonition[admonition="note"] .sb-admonition-type * { display: none; }
-.sb-admonition[admonition="note"] {
-  --admonition-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>');
-  --admonition-color: #00b8d4;
-}
-
-.sb-admonition[admonition="warning"] .sb-admonition-type::before { width: var(--admonition-width) !important; }
-.sb-admonition[admonition="warning"] .sb-admonition-type * { display: none; }
-.sb-admonition[admonition="warning"] {
-  --admonition-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>');
-  --admonition-color: #ff9100;
-}
-
+```space-style
 /* Find Replace */
 /* -------------------------------------------------------------- */
 .ͼ1 .cm-textfield {
   color: var(--base06);
-  background-color: var(--base0c);
+  background-color: var(--base0C);
 }
 .ͼ1 .cm-button {
     color: var(--base00);
@@ -411,86 +399,74 @@ html[data-theme="dark"] {
 }
 #sb-editor .cm-panels-bottom .cm-search .cm-button {
     background-image: none;
-    background: var(--base0c);
+    background: var(--base09);
 }
-
 ```
 
-## Plugin Customizations
-
-### Tree View
+### Task
 
 ```space-style
-
-/* Treeview */
+/* Task */
 /* -------------------------------------------------------------- */
-#sb-top .panel {
-  display: none;
-}
-#sb-main {
-  position: relative;
-
-  .sb-panel:nth-of-type(1) {
-    position: absolute;
-    display: block;
-    height: 100%;
-    z-index: 99;
-    resize: horizontal;
-    overflow: auto;
-    background-color: var(--panel-background-color);
-  }
-}
-
-.treeview-root {
-  height: 100% !important;
-  background-color: var(--panel-background-color);
-  border-right: var(--top-border-color) 1px solid;
-
-  .tree__label > span {
-    /*font-family: var(--ui-font);
-    font-size: 14px !important;
-    font-weight: 400;
-    border: unset;*/
-    padding: 2px;
-
-  }
-  .treeview-header {
-    background-color: var(--panel-background-color);
-
-    .treeview-actions {
-      background-color: var(--panel-background-color);
-      border: unset;
-    }
-  }
-  .tree__label > span[data-node-type="folder"] {
-      background-color: transparent; 
-      border-color: transparent;
-      color: var(--base0e); 
-  }
-  .tree__label > span[data-node-type="page"] {
-    background-color: transparent;
-    border-color: transparent;
-    color: var(--treeview-page-color);
-  }
-  .tree__label > span[data-current-page="true"] {
-    /*width: 100%;*/
+#sb-main .cm-editor input[type=checkbox] {
+    appearance: none;
+    -webkit-appearance: none;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 1.2em;
+    height: 1.2em;
+    margin: 0;
+    padding: 0;
+    border: 2px solid var(--base04);
     border-radius: 3px;
-    background-color: var(--base0c);
-    color: var(--base00);
-  }
-  #treeview-tree .tree__node .tree__subnodes:has(> .tree__node):before {
-    content: "";
-    background-color: var(--panel-background-color);
-    position: absolute;
-    top: 33px;
-    left: -13px;
-    height: calc(100% - 40px);
-    width: 1px;
-  }
+    background: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    position: relative;
+    /*vertical-align: inherit;*/
 
-  .tree__collapse {
-    /*color: var(--surface1);*/
-    height: calc(var(--st-collapse-icon-height) - 5px);
-  }
+    /* Center the pseudo-element tick mark inside the box */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+/* 1. When checked: Turn the background green and match the border */
+#sb-main .cm-editor input[type=checkbox]:checked {
+    background: var(--base02); /* A clean, solid green */
+    border-color: var(--base03);
+}
+
+/* 2. Define the tick mark shape inside the checkbox */
+#sb-main .cm-editor input[type=checkbox]::after {
+    content: "";
+    width: 0.25em;
+    height: 0.55em;
+    color: var(--base05);
+
+    /* Create a thick white L-shape */
+    border: solid white;
+    border-width: 0 2px 2px 0; /* Adjust '3px' if you want it thicker or thinner */
+
+    /* Rotate it into a checkmark and position it slightly upwards */
+    transform: rotate(45deg);
+    margin-top: -0.1em;
+
+    /* Hide the tick mark by default */
+    opacity: 0;
+    transition: opacity 0.1s ease;
+}
+
+#sb-main .cm-editor .sb-checkbox {
+    display: inline-block;
+    text-align: center;
+    width: 3ch; 
+    text-indent: 0;
+    line-height: 1;
+}
+
+/* 3. Reveal the thick white tick mark when checked */
+#sb-main .cm-editor input[type=checkbox]:checked::after {
+    opacity: 1;
 }
 ```

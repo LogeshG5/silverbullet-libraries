@@ -10,7 +10,7 @@ pageDecoration.prefix: "🎨 "
 
 ### EVA Dark
 
-```space-style-disabled
+```space-style
 /* priority: 1 */
 html {
    --base00: #f8f8f8;
@@ -68,7 +68,7 @@ html[data-theme="dark"] {
 
 ### Tokyo Night Dark
 
-```space-style-disabled
+```space-styled
 /* priority: 1 */
 /* Tokyo Night */
 html[data-theme="light"] {
@@ -456,11 +456,21 @@ html[data-theme="dark"]  { color-scheme: dark; }
     opacity: 0;
     transition: opacity 0.1s ease;
 }
-
+#sb-main .cm-editor input[type=checkbox]:checked::after {
+    content: "";
+    position: absolute;
+    left: 28%;
+    top: 8%;
+    width: 32%;
+    height: 64%;
+    border: solid var(--base03);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
 #sb-main .cm-editor .sb-checkbox {
     display: inline-block;
     text-align: center;
-    width: 3ch; 
+    width: 3ch;
     text-indent: 0;
     line-height: 1;
 }
@@ -469,4 +479,9 @@ html[data-theme="dark"]  { color-scheme: dark; }
 #sb-main .cm-editor input[type=checkbox]:checked::after {
     opacity: 1;
 }
+
+.sb-checkbox {
+    cursor: default;
+}
+
 ```

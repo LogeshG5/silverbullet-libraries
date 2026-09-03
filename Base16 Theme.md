@@ -406,82 +406,69 @@ html[data-theme="dark"]  { color-scheme: dark; }
 ### Task
 
 ```space-style
-/* Task */
-/* -------------------------------------------------------------- */
-#sb-main .cm-editor input[type=checkbox] {
-    appearance: none;
-    -webkit-appearance: none;
-    display: inline-block;
-    box-sizing: border-box;
-    width: 1.2em;
-    height: 1.2em;
-    margin: 0;
-    padding: 0;
-    border: 2px solid var(--base04);
-    border-radius: 3px;
-    background: rgba(0, 0, 0, 0);
-    cursor: pointer;
-    position: relative;
-    /*vertical-align: inherit;*/
-
-    /* Center the pseudo-element tick mark inside the box */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.15s ease, border-color 0.15s ease;
-}
-
-/* 1. When checked: Turn the background green and match the border */
-#sb-main .cm-editor input[type=checkbox]:checked {
-    background: var(--base02); /* A clean, solid green */
-    border-color: var(--base03);
-}
-
-/* 2. Define the tick mark shape inside the checkbox */
-#sb-main .cm-editor input[type=checkbox]::after {
-    content: "";
-    width: 0.25em;
-    height: 0.55em;
-    color: var(--base05);
-
-    /* Create a thick white L-shape */
-    border: solid white;
-    border-width: 0 2px 2px 0; /* Adjust '3px' if you want it thicker or thinner */
-
-    /* Rotate it into a checkmark and position it slightly upwards */
-    transform: rotate(45deg);
-    margin-top: -0.1em;
-
-    /* Hide the tick mark by default */
-    opacity: 0;
-    transition: opacity 0.1s ease;
-}
-#sb-main .cm-editor input[type=checkbox]:checked::after {
-    content: "";
-    position: absolute;
-    left: 28%;
-    top: 8%;
-    width: 32%;
-    height: 64%;
-    border: solid var(--base03);
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-}
 #sb-main .cm-editor .sb-checkbox {
     display: inline-block;
     text-align: center;
     width: 3ch;
     text-indent: 0;
-    line-height: 1;
+    line-height: 1
 }
-
-/* 3. Reveal the thick white tick mark when checked */
-#sb-main .cm-editor input[type=checkbox]:checked::after {
-    opacity: 1;
-}
-
 .sb-checkbox {
-    cursor: default;
+    cursor: text !important;
+}
+#sb-main .cm-editor input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    display: inline-block;
+    box-sizing: border-box;
+
+    /* Actual clickable area */
+    width: 2.4em;
+    height: 2.4em;
+
+    margin: -0.6em;
+    padding: 0;
+
+    border: 0;
+    border-radius: 3px;
+    background: transparent;
+
+    cursor: pointer;
+    position: relative;  
 }
 
+#sb-main .cm-editor input[type=checkbox]::before {
+    content: "";
+    position: absolute;
+
+    width: 1.2em;
+    height: 1.2em;
+
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    box-sizing: border-box;
+    border: 2px solid var(--base04);
+    border-radius: 3px;
+    background: transparent;
+
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+#sb-main .cm-editor input[type=checkbox]:checked::before {
+    background: var(--base03);
+    border-color: var(--base03);
+
+}
+#sb-main .cm-editor input[type=checkbox]:checked::after {
+    content: "";
+    position: absolute;
+    left: 40%;
+    top: 27%;
+    width: .35em;
+    height: .67em;
+    border: solid var(--base01);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
 ```

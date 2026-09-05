@@ -46,6 +46,92 @@ Restart your Docker container to trigger the boot script and initialize the tool
 ## Implementation
 
 ```space-lua
+rgsearch = rgsearch or {}
+function rgsearch.parseRgOutput(rgJsonOutput)
+
+  local results = {}
+
+  for line in rgJsonOutput:gmatch("[^\r\n]+") do
+      parsed = js.tolua(js.window.JSON.parse(line))
+
+      if parsed.type == "match" and parsed.data then
+        local data = parsed.data
+        local fullPath = data.path and data.path.text or ""
+        local rawLine = data.lines and data.lines.text or ""
+
+        -- Clean trailing newline/carriage returns
+        local cleanLine = string.gsub(rawLine, "[\r\n]", "")
+
+        -- Extract just the filename from path (e.g., "docs/Journal/Week/2026-08-03.md" -> "2026-08-03.md")
+        local fileName = string.match(fullPath, "[^/]+$") or fullPath
+
+        -- Build submatches table
+        local submatches = {}
+        if data.submatches then
+          for _, sub in ipairs(data.submatches) do
+            table.insert(submatches, {  
+              text = sub.match and sub.match.text or "",
+              startCol = sub.start,
+              endCol = sub["end"]
+            })
+          end
+        end
+
+        -- Construct name: <filename>/<line content preview>
+        local namePath = fileName .. "\31" .. cleanLine
+
+        table.insert(results, {
+          name = namePath,
+          path = fullPath,
+          lineNumber = data.line_number,
+          offset = data.absolute_offset,
+          line = cleanLine,
+          submatches = submatches
+        })
+    end
+  end
+  return results
+end
+
+view.define {
+  name = "RG Search",
+  title = "Search",
+  command = "Navigate: Search",
+  dock = "modal",
+  supportedDocks = { "page-top", "page-bottom", "lhs", "rhs", "modal" },
+  defaultOpen = true,
+  key = "Ctrl-Shift-f",
+  mac = "Cmd-Shift-f",
+  source = function(ctx)
+    local term = ctx.phrase
+    if #term == 0 then 
+      term = editor.getSelection().text 
+    end
+    if #term < 3 then return end
+    local result = shell.run("rg", {"-nbiu", "--json", "--column", "--type", "markdown", term})
+    local searchdata = rgsearch.parseRgOutput(result.stdout)
+    return searchdata;
+  end,
+  search = "source",
+  presentation = {
+    mode = "tree",
+    hierarchy = { field = "name", separator = "\31"},
+    row = {
+      primary = "name",
+      description = "page",
+      icon = function(obj) if obj.isFolder then return 'file-text' end end,
+    },
+    expandAll = true,
+  },
+  onSelect = function(item)
+    editor.navigate(item.path .. '@' .. item.offset)
+  end,
+}
+```
+
+## Alternate Implementation
+
+```space-lua-disabled
 searcher = searcher or {}
 
 local PANEL_ID = "rhs"

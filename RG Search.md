@@ -41,6 +41,8 @@ apk add ripgrep
 3. **Restart your container:** Apply changes.
 Restart your Docker container to trigger the boot script and initialize the tool.
 
+4. Enable Shell commands in your space settings.
+Go to dashboard > Spaces > Click edit space settings button > Advanced tab > Check Enable shell commands
 ---
 
 ## Implementation

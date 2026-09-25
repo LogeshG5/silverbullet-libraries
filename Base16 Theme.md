@@ -302,7 +302,7 @@ html[data-theme="dark"] {
   /* Layout Typography Constraints */
    --ui-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
    --editor-font: "Consolas", "iA-Mono", "Menlo";
-   --editor-width: 1200px;
+   --editor-width: 1000px;
 
 
   /* ----------------------------------------------------
@@ -470,5 +470,22 @@ html[data-theme="dark"]  { color-scheme: dark; }
     border: solid var(--base01);
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
+}
+```
+
+### Fix Border with Lua Widget
+
+```space-style
+.sb-lua-directive-inline {
+  border: none !important;
+}
+```
+
+### Fix Underscore in Page Picker
+
+```space-style
+.sb-nav-input:focus-visible {
+  outline: none;
+  box-shadow: none;
 }
 ```

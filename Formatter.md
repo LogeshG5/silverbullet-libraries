@@ -49,8 +49,8 @@ formatter = formatter or {}
 --local prettier = js.import("https://cdn.jsdelivr.net/npm/prettier@3.6.2/standalone/+esm")
 --local prettierMarkdown = js.import("https://cdn.jsdelivr.net/npm/prettier@3.6.2/plugins/markdown/+esm")
 
-local prettier = js.import("/.fs/Library/LogeshG5/prettier-3.6.2.js")
-local prettierMarkdown = js.import("/.fs/Library/LogeshG5/prettier-markdown-plugin-3.6.2.js")
+local prettier = js.importFromSpace("Library/LogeshG5/prettier-3.6.2.js")
+local prettierMarkdown = js.importFromSpace("Library/LogeshG5/prettier-markdown-plugin-3.6.2.js")
 
 function formatter.formatText(text)
   return prettier.format(text, { parser = 'markdown', plugins =  { prettierMarkdown } })

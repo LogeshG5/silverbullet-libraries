@@ -188,7 +188,7 @@ html[data-theme="dark"] {
   --modal-hint-inactive-background-color: var(--base01);
   --modal-hint-inactive-color: var(--base04);
   --modal-description-color: var(--base04);
-  --modal-selected-option-description-color: var(--base06);
+  --modal-selected-option-description-color: var(--ui-accent-contrast-color);
 
   /* Toast & App Notifications */
   --notifications-background-color: var(--base01);
@@ -487,5 +487,13 @@ html[data-theme="dark"]  { color-scheme: dark; }
 .sb-nav-input:focus-visible {
   outline: none;
   box-shadow: none;
+}
+```
+
+### Fix Search Highlight
+
+```space-style
+.sb-nav-primary mark, .sb-nav-description mark {
+    color: revert !important;
 }
 ```

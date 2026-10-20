@@ -8,17 +8,17 @@ pageDecoration.prefix: "📚 "
 
 ```#meta/library/remote
 name: "Excalidraw"
-uri: github:LogeshG5/LogeshG5/silverbullet-excalidraw/PLUG.md
+uri: github:LogeshG5/silverbullet-excalidraw/PLUG.md
 website: https://github.com/LogeshG5/silverbullet-excalidraw
 description: "Silverbullet Excalidraw"
 ---
 name: "Drawio"
-uri: github:LogeshG5/LogeshG5/silverbullet-drawio/PLUG.md
+uri: github:LogeshG5/silverbullet-drawio/PLUG.md
 website: https://github.com/LogeshG5/silverbullet-drawio
 description: "Silverbullet Drawio"
 ---
 name: "Plantuml"
-uri: github:LogeshG5/LogeshG5/silverbullet-plantuml/PLUG.md
+uri: github:LogeshG5/silverbullet-plantuml/PLUG.md
 website: https://github.com/LogeshG5/silverbullet-plantuml
 description: "Silverbullet Plantuml"
 ---

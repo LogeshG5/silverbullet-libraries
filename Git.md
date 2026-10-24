@@ -102,7 +102,7 @@ function git.debug()
 end
 
 command.define {
-  name = "Git: 
+  name = "Git: Init",
   run = function()
     local confirmed = editor.confirm "This operation will reset all existing files, Are you sure?"
     if not confirmed then return end

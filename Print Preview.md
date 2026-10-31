@@ -152,8 +152,7 @@ command.define {
 -- description: Export Markdown as HTML using Pandoc WASM
 
 command.define {
-  name = "Export: Markdown to HTML",
-  key = "Ctrl-Alt-h",
+  name = "Export: Print Preview with Pandoc",
   run = function()
     editor.save()
 

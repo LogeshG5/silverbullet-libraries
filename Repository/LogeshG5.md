@@ -80,6 +80,11 @@ uri: github:LogeshG5/silverbullet-libraries/Export As PDF with Pandoc.md
 website: https://github.com/LogeshG5/silverbullet-libraries/blob/main/Export As PDF with Pandoc.md
 description: Export As PDF with Pandoc
 ---
+name: 🖨️ Print Preview with Pandoc
+uri: github:LogeshG5/silverbullet-libraries/Print Preview.md
+website: https://github.com/LogeshG5/silverbullet-libraries/blob/main/Print Preview.md
+description: Print Preview with Pandoc
+---
 name: 👁️‍🗨️ Toggle Title Bar Visibility
 uri: github:LogeshG5/silverbullet-libraries/Toggle Title Bar Visibility.md
 website: https://github.com/LogeshG5/silverbullet-libraries/blob/main/Toggle Title Bar Visibility.md

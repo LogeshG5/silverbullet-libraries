@@ -126,7 +126,7 @@ end
 
 
 command.define {
-  name = "Export: Markdown to HTML",
+  name = "Export: Print Preview with Pandoc",
   run = function()
     editor.save()
 
@@ -146,46 +146,3 @@ command.define {
 }
 ```
 
-```space-luad
-
--- name: Library/MarkdownExport
--- description: Export Markdown as HTML using Pandoc WASM
-
-command.define {
-  name = "Export: Print Preview with Pandoc",
-  run = function()
-    editor.save()
-
-    local pageName = editor.getCurrentPage()
-    local markdownText = editor.getText()
-
-    local pandoc = js.importFromSpace("Library/LogeshG5/pandoc-loader.js")
-
-    local result = pandoc.convert({
-      from = "markdown",
-      to = "html",
-      standalone = true,
-      ["table-of-contents"] = true,
-      ["highlight-style"] = "github",
-      metadata = {
-        title = pageName
-      }
-    }, markdownText, {})
-
-    if result.stderr and result.stderr ~= "" then
-      print(result.stderr)
-    end
-
-    local outputFile = "temp/PrintPreview.html"
-
-    space.writeFile(outputFile, result.stdout)
-    sync.performFileSync(outputFile)
-
-    editor.flashNotification("HTML exported: " .. outputFile)
-
-    editor.openUrl(
-      system.getURLPrefix() .. ".fs/" .. outputFile
-    )
-  end
-}
-```

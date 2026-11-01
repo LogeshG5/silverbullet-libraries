@@ -1,7 +1,11 @@
+This is a collection of plugins (libraries) for [SilverBullet](https://silverbullet.md) by `Logesh G`.
 
-This is a collection of SilverBullet libraries, currently containing:
+## Install
 
-# Available libraries
+Add this repository in SilverBullet with the `Library: Add Repository` command and the URI:
 
-# How to use
+```text
+https://github.com/LogeshG5/silverbullet-libraries/blob/main/Repository/LogeshG5.md
+```
 
+Then install a plugin with `Library: Install`.
